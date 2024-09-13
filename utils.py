@@ -1,7 +1,7 @@
 ## Please fill in all the parts labeled as ### YOUR CODE HERE
 
 import numpy as np
-
+from numpy.linalg import norm
 def dot_product(v1, v2):
     '''
     v1 and v2 are vectors of same shape.
@@ -9,6 +9,7 @@ def dot_product(v1, v2):
     # Hint: use `np.dot`.
     '''
     ### YOUR CODE HERE
+    return np.dot(v1, v2)
     
 def cosine_similarity(v1, v2):
     '''
@@ -26,7 +27,8 @@ def cosine_similarity(v1, v2):
     
     # Hint: Use `dot_product` and `np.linalg.norm`.
     '''
-    ### YOUR CODE HERE
+
+    return dot_product(v1,v2)/(norm(v1)*norm(v2))
     
 def nearest_neighbor(target_vector, vectors):
     '''
@@ -39,3 +41,12 @@ def nearest_neighbor(target_vector, vectors):
     # Hint: For this lab, you can just use a for loop to iterate through vectors.
     '''
     ### YOUR CODE HERE
+    final_index = -1
+    final_similarity = -1
+    for i in range(len(vectors)):
+       similarity = cosine_similarity(target_vector, vectors[i])
+       if similarity > final_similarity:
+        final_similarity = similarity
+        final_index = i
+    
+    return final_index
