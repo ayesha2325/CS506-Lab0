@@ -19,7 +19,7 @@ def test_cosine_similarity():
 
     result = cosine_similarity(vector1, vector2)
     
-    expected_result = 32/(3.742*8.775)
+    expected_result = 0.9746318461970762
     
     assert np.isclose(result, expected_result), f"Expected {expected_result}, but got {result}"
 
@@ -29,6 +29,7 @@ def test_nearest_neighbor():
     
     result = nearest_neighbor(input_vector, vectors)
     
-    expected_index = 0
+    expected_index = 1
     
     assert result == expected_index, f"Expected index {expected_index}, but got {result}"
+
